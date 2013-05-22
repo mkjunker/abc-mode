@@ -29,7 +29,6 @@
 ;; Initialization suggestion:
 ;; (add-to-list 'auto-mode-alist '("\\.abc\\'"  . abc-mode))
 ;; (add-to-list 'auto-mode-alist '("\\.abp\\'"  . abc-mode))
-;; (autoload 'abc-mode "abc-mode" "abc music files" t)
 ;; (add-to-list 'auto-insert-alist '(abc-mode . abc-skeleton))
 ;;
 
