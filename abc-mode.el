@@ -2,7 +2,7 @@
 
 ;; Copyright (C) 2002, 2003, 2004, 2006, 2008, 2012, 2013  Matthew K. Junker
 
-;; Author: Matthew K. Junker <junkerdog@catalum.mit.edu> (remove the animals around the @)
+;; Author: Matthew K. Junker <junker@alum.mit.edu>
 ;; Package-Version: 20130521
 ;; Keywords: local, docs
 
@@ -22,17 +22,17 @@
 ;; Boston, MA 02111-1307, USA.
 
 ;;; Commentary:
-
+;;
 ;; A major mode for editing abc music files.  Includes some abc2midi
 ;; features.
-
+;;
 ;; Initialization suggestion:
 ;; (add-to-list 'auto-mode-alist '("\\.abc\\'"  . abc-mode))
 ;; (add-to-list 'auto-mode-alist '("\\.abp\\'"  . abc-mode))
 ;; (autoload 'abc-mode "abc-mode" "abc music files" t)
 ;; (add-to-list 'auto-insert-alist '(abc-mode . abc-skeleton))
 ;;
-;; Or set `abc-mode-auto' to `t' (the default).
+
 
 ;; Written for Emacs version 21.  May or may not work with previous
 ;; versions.
@@ -74,14 +74,6 @@
 (defcustom abc-mode-hook nil
   "*Hook called by `abc-mode'."
   :type 'hook
-  :group 'abc-mode)
-
-;;;###autoload
-(defcustom abc-mode-auto t
-  "*When non-nil, enable automatic settings.
-Sets `auto-mode-alist' and `auto-insert-alist' entries as
-autoload items."
-  :type 'boolean
   :group 'abc-mode)
 
 (defcustom abc-mode-comment-start "%" "*Comment string to use in abc mode."
@@ -1341,13 +1333,6 @@ Optional argument PROMPT is the prompt to show."
   "Customize `abc-mode' settings."
   (interactive)
   (customize-group 'abc-mode))
-
-;;;###autoload
-(when abc-mode-auto
-  (add-to-list 'auto-mode-alist '("\\.abc\\'"  . abc-mode))
-  (add-to-list 'auto-mode-alist '("\\.abp\\'"  . abc-mode))
-  (add-to-list 'auto-insert-alist '(abc-mode . abc-skeleton)))
-
 
 (provide 'abc-mode)
 ;;; abc-mode.el ends here
