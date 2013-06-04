@@ -1001,40 +1001,40 @@ These options will be retained."
               ["Melody Channel (1-16)"    (insert "%%MIDI channel ") t]
               (cons "Instrument"
                     (mapcar
-                     '(lambda (l)
-                        (vector (car l)
-                                (list 'insert
-                                      (list 'format "%d %% %s\n"
-                                            (cdr l) (car l)))))
+                     (lambda (l)
+                       (vector (car l)
+                               (list 'insert
+                                     (list 'format "%d %% %s\n"
+                                           (cdr l) (car l)))))
                      abc-midi-instruments-alist))
               (cons "Main Instrument"
                     (mapcar
-                     '(lambda (l)
-                        (vector
-                         (car l)
-                         (list 'insert
-                               (list 'format "%%%%MIDI program %d %% %s\n"
-                                     (cdr l) (car l)))))
+                     (lambda (l)
+                       (vector
+                        (car l)
+                        (list 'insert
+                              (list 'format "%%%%MIDI program %d %% %s\n"
+                                    (cdr l) (car l)))))
                      abc-midi-instruments-alist))
               (cons "Bass Instrument"
                     (mapcar
-                     '(lambda (l)
-                        (vector
-                         (car l)
-                         (list 'insert
-                               (list 'format
-                                     "%%%%MIDI bassprog %d %% %s\n"
-                                     (cdr l) (car l)))))
+                     (lambda (l)
+                       (vector
+                        (car l)
+                        (list 'insert
+                              (list 'format
+                                    "%%%%MIDI bassprog %d %% %s\n"
+                                    (cdr l) (car l)))))
                      abc-midi-instruments-alist))
               (cons "Chord Instrument"
                     (mapcar
-                     '(lambda (l)
-                        (vector
-                         (car l)
-                         (list 'insert
-                               (list 'format
-                                     "%%%%MIDI chordprog %d %% %s\n"
-                                     (cdr l) (car l)))))
+                     (lambda (l)
+                       (vector
+                        (car l)
+                        (list 'insert
+                              (list 'format
+                                    "%%%%MIDI chordprog %d %% %s\n"
+                                    (cdr l) (car l)))))
                      abc-midi-instruments-alist))
               ["Insert Instrument"        abc-insert-instrument           t]
               "--"
@@ -1057,11 +1057,11 @@ These options will be retained."
         ["Set abc2ps Options"           abc-set-abc2ps-option-set t]
         (cons "Select Option Set"
               (mapcar
-               '(lambda (l)
-                  (vector (car l)
-                          (list 'setq 'abc-preferred-options (cdr l))
-                          :style 'radio :selected
-                          (list 'string= 'abc-preferred-options (cdr l))))
+               (lambda (l)
+                 (vector (car l)
+                         (list 'setq 'abc-preferred-options (cdr l))
+                         :style 'radio :selected
+                         (list 'string= 'abc-preferred-options (cdr l))))
                abc-option-alist))
         "--"
         "MIDI"
@@ -1075,7 +1075,7 @@ These options will be retained."
         "--"
         ["Enable Mouse Input"           abc-mouse              t]
         ["Remove Mouse Window"          delete-other-windows   t]
-))
+        ))
 
 
 
@@ -1134,7 +1134,7 @@ Argument EVENT is the mouse event."
 
 (defun abc-event-to-note ()
   "Symbol at the event position (mouse click)."
-  (save-excursion
+  (with-current-buffer
     (set-buffer (window-buffer (posn-window (event-start last-input-event))))
     (goto-char (posn-point (event-start last-input-event)))
     (abc-cursor-to-note)))
@@ -1311,7 +1311,10 @@ Optional argument PROMPT is the prompt to show."
   "Align on bar lines \"|\" between BEGIN and END (region)."
   (interactive "r")
   (add-to-list 'align-text-modes 'abc-mode)
-  (replace-regexp "[ ]+|[ ]+" " | " nil begin end)
+  (save-excursion
+    (goto-char begin)
+    (while (re-search-forward "[ ]+|[ ]+" end t)
+      (replace-match " | ")))
   (align-regexp begin end "\\(.\\)|" 1 1 t))
 
 (defvar abc-chord-history nil
