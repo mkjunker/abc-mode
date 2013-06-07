@@ -26,11 +26,7 @@
 ;; A major mode for editing abc music files.  Includes some abc2midi
 ;; features.
 ;;
-;; Initialization suggestion:
-;; (add-to-list 'auto-mode-alist '("\\.abc\\'"  . abc-mode))
-;; (add-to-list 'auto-mode-alist '("\\.abp\\'"  . abc-mode))
-;; (add-to-list 'auto-insert-alist '(abc-mode . abc-skeleton))
-;;
+
 
 
 ;; Written for Emacs version 21.  May or may not work with previous
@@ -63,6 +59,14 @@
 
 (require 'easymenu)
 (require 'newcomment)
+(require 'autoinsert)
+
+;;;###autoload
+(add-to-list 'auto-mode-alist '("\\.abp\\'"  . abc-mode))
+;;;###autoload
+(add-to-list 'auto-mode-alist '("\\.abc\\'"  . abc-mode))
+;;;###autoload
+(add-to-list 'auto-insert-alist '(abc-mode . abc-skeleton))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
