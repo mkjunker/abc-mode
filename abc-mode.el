@@ -63,6 +63,7 @@
 
 (require 'easymenu)
 (require 'newcomment)
+(require 'time-stamp)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -472,6 +473,48 @@ besides titles."
   :type 'string :group 'abc-mode-tags)
 (defcustom abc-edited-by-tag "%%abc-edited-by " "*Edited by tag."
   :type 'string :group 'abc-mode-tags)
+(defcustom abc-filename-format "Time-stamp: <>"
+  "*Format for the filename field.
+
+The ABC standard says this should be a URL.  In this package, I
+allow a more options by using the `time-stamp' feature.
+
+The default is to insert a time stamp and the file name (see
+`abc-time-stamp-format').  This was chosen over other options, as
+it is the most universally available.
+
+Users of version control systems may wish to use keywords, such
+as ``$Id$''.  This package used to do that, but since I
+discovered Git, I realized that not everyone does it the same
+way."
+  :type 'string :group 'abc-mode-tags)
+
+(defun abc-set-time-stamp-format (name value)
+  "Set NAME according to VALUE."
+  (if (stringp value)
+      (set name value)
+    (set name (car (get 'time-stamp-format 'standard-value)))))
+(defcustom abc-time-stamp-format "%f, %3b %:d, %:y, %0I:%02M %#p"
+  "*Format for time stamps.  See `time-stamp-format'.
+
+When `abc-mode' is invoked, `time-stamp-format' is made local and
+set to the value of this variable.
+
+If the value is t, then the standard value of `time-stamp-format'
+is used.
+
+Since `time-stamp-format' is local in each buffer, there is no
+good way to use the :set keyword, or is there?  Or could the
+skeleton deal with it on each invocation?  It would be nice if
+the const field could use (car (get 'time-stamp-format
+'standard-value)).  Considered modifying the value to match
+`time-stamp-format', but if `time-stamp-format' changes, then the
+customization doesn't."
+  :type '(choice (const  :tag "Use global `time-stamp-format'" t)
+                 (string :tag "Custom string"))
+;;  :set 'abc-set-time-stamp-format
+  :group 'abc-mode-tags)
+
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1227,6 +1270,10 @@ Use TeX-type quoting `` & '' for double quotes in lyrics.
 
    (set (make-local-variable 'font-lock-defaults)
         '(abc-font-lock-keywords nil nil))
+   (set (make-local-variable 'time-stamp-format)
+        (if (stringp abc-time-stamp-format)
+            abc-time-stamp-format
+          (car (get 'time-stamp-format 'standard-value))))
    (make-local-variable 'abc-options)
    (if abc-use-song-as-page-delimiter
        (set (make-local-variable 'page-delimiter)
@@ -1279,7 +1326,7 @@ Optional argument PROMPT is the prompt to show."
       (number-to-string (1+ (abc-current-song-number t)))
     "1")
   ("Title: "    \n abc-title-tag str)
-  \n abc-filename-tag "$Id: abc-mode.el 906 2013-01-11 15:52:26Z junker $"
+  \n abc-filename-tag abc-filename-format
   ("Lyricist: " \n abc-lyricist-tag str)
   ("Composer: " \n abc-composer-tag str)
   ("Book (original source): "     \n abc-book-tag str)
