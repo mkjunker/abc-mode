@@ -1,9 +1,10 @@
 ;;; abc-mode.el --- Major mode for editing abc music files
 
-;; Copyright (C) 2002, 2003, 2004, 2006, 2008, 2012, 2013  Matthew K. Junker
+;; Copyright (C) 2002, 2003, 2004, 2006, 2008, 2012, 2013, 2014
+;; Matthew K. Junker
 
 ;; Author: Matthew K. Junker <junker@alum.mit.edu>
-;; Package-Version: 20130521
+;; Package-Version: 20140225.114059
 ;; Keywords: local, docs
 
 ;; This file is free software; you can redistribute it and/or modify
@@ -65,7 +66,8 @@
 ;;;###autoload
 (add-to-list 'auto-mode-alist '("\\.abc\\'"  . abc-mode))
 ;;;###autoload
-(add-to-list 'auto-insert-alist '(abc-mode . abc-skeleton))
+(when (require 'autoinsert nil t)
+  (add-to-list 'auto-insert-alist '(abc-mode . abc-skeleton)))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
