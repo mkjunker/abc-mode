@@ -4,7 +4,7 @@
 ;; Matthew K. Junker
 
 ;; Author: Matthew K. Junker <junker@alum.mit.edu>
-;; Package-Version: 20171020.51543
+;; Package-Version: 20171020.51809
 ;; Keywords: local, docs
 
 ;; This file is free software; you can redistribute it and/or modify
@@ -1361,23 +1361,21 @@ Optional argument PROMPT is the prompt to show."
   (interactive)
   (customize-group 'abc-mode))
 
-;;(defun abc-extract-chords ()
-;;  "Leave only chords, rests, and bar lines on the current line."
-;;  (interactive)
-;;  (save-restriction
-;;    (narrow-to-region (line-beginning-position) (line-end-position))
-;;    (beginning-of-line)
-;;    (while (< (point) (line-end-position))
-;;      (cond ((looking-at "\".*?\"") (goto-char (match-end 0)))
-;;            ((looking-at "[A-Ga-g]")
-;;             (kill-region (match-beginning 0) (match-end 0))
-;;             (insert "x"))
-;;            ((looking-at "[',()^_=]") (delete-char 1))
-;;            ((looking-at "[[]") (delete-char 1))
-;;            ((looking-at "[]]") (delete-char 1))
-;;            (t (forward-char))))))
-;;
-;;    (if (looking-at "\".*"")
+(defun abc-extract-chords ()
+  "Leave only chords, rests, and bar lines on the current line."
+  (interactive)
+  (save-restriction
+    (narrow-to-region (line-beginning-position) (line-end-position))
+    (beginning-of-line)
+    (while (< (point) (line-end-position))
+      (cond ((looking-at "\".*?\"") (goto-char (match-end 0)))
+            ((looking-at "[A-Ga-g]")
+             (kill-region (match-beginning 0) (match-end 0))
+             (insert "x"))
+            ((looking-at "[',()^_=]") (delete-char 1))
+            ((looking-at "[[]") (delete-char 1))
+            ((looking-at "[]]") (delete-char 1))
+            (t (forward-char))))))
 
 (provide 'abc-mode)
 ;;; abc-mode.el ends here
