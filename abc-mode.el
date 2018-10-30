@@ -69,7 +69,7 @@
 (when (require 'autoinsert nil t)
   (add-to-list 'auto-insert-alist '(abc-mode . abc-skeleton)))
 
-
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (defgroup abc-mode nil
   "Major mode for editing and processing `abc' music files."
@@ -106,7 +106,7 @@ This feature takes effect when `abc-mode' is executed."
   :type 'boolean
   :group 'abc-mode)
 
-
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (defgroup abc-abc2ps nil "Items related to `abc2ps'." :group 'abc-mode)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -141,7 +141,7 @@ A list of pairs of the format (NAME-STRING OPTION-STRING)."
   "*Program flags beyond those from the option sets."
   :type 'string :group 'abc-abc2ps)
 
-
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (defgroup abc-abc2midi nil "Items related to `abc2midi'." :group 'abc-mode)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -377,12 +377,12 @@ From the documentation of abc2midi:
 Abc2midi: Some of the documentation which comes with abc2midi
 states that the MIDI program number should range between 1 and
 128; however, as far back as 2003, abc2midi expects the range to
-be between 0 and 127 following the MIDI standard. The
+be between 0 and 127 following the MIDI standard.  The
 documentation abcguide.txt and the man page abc2midi.1 have been
 corrected.  Unfortunately, the Abc standard was based on the old
 documentation.  It is too late to change abc2midi to comply with
 the abc standard since there are too many abc existing files
-using the current convention. As a temporary compromise, I have
+using the current convention.  As a temporary compromise, I have
 added a new command %%MIDI programbase.
 
 The current default is (so you do not need this line).
@@ -394,14 +394,14 @@ To change to the abc standard use
   :group 'abc-abc2midi)
 
 
-
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (defgroup abc-abc2abc nil "Items related to `abc2abc'." :group 'abc-mode)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (defcustom abc-abc2abc-executable "abc2abc" "*Name of the abc2abc executable."
   :type 'string :group 'abc-abc2abc)
 
-
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (defgroup abc-preprocessor nil "Items related to `abcpp'." :group 'abc-mode)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -419,7 +419,7 @@ This string is automatically inserted on the preprocessor command line
 when MIDI output is desired."
   :type 'string :group 'abc-preprocessor)
 
-
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (defgroup abc-mode-tags nil "Field tags for `abc' music files."
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -498,7 +498,7 @@ besides titles."
 (defcustom abc-edited-by-tag "%%abc-edited-by " "*Edited by tag."
   :type 'string :group 'abc-mode-tags)
 
-
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (defgroup abc-mouse nil "Mouse input for abc mode." :group 'abc-mode)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -532,7 +532,7 @@ b   ---------- B,, - Z -- G --------------
   "*Alist of mouse buffer (`abc-mouse-pad') text and desired actions."
   :type '(alist :key-type string :value-type function) :group 'abc-mouse)
 
-
+
 (defvar abc-option-history nil "History of option sets.")
 (defvar abc-additional-option-history nil "History of additional options.")
 (defvar abc-instrument-history nil "History of MIDI instruments.")
@@ -555,7 +555,7 @@ additional options."
                               'abc-additional-option-history)))
 
 
-
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Syntax & font-lock
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -676,7 +676,7 @@ boundaries of songs."
   (pop-to-buffer "*Occur*"))
 
 
-
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Postscript output
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -728,7 +728,7 @@ Optional argument OPTIONS is program flags beyond the current option set."
            (number-to-string (abc-current-song-number))
            (if options options ""))))
 
-
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Preprocessor functions
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -775,7 +775,7 @@ These options will be retained."
   (interactive "P")
   (abc-preprocess argp (buffer-file-name)))
 
-
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; MIDI output
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -827,7 +827,7 @@ These options will be retained."
               " "
               (file-name-nondirectory name))))))
 
-
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Editing functions
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1103,7 +1103,7 @@ These options will be retained."
         ))
 
 
-
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Mouse input functions
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1164,7 +1164,7 @@ Argument EVENT is the mouse event."
     (goto-char (posn-point (event-start last-input-event)))
     (abc-cursor-to-note)))
 
-
+
 ;;;###autoload
 (define-derived-mode abc-mode text-mode "abc-mode"
    "Major mode for editing abc music files.
@@ -1258,7 +1258,7 @@ Use TeX-type quoting `` & '' for double quotes in lyrics.
             abc-song-number-regexp))
    (run-hooks 'abc-mode-hook))
 
-
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Data insertion aids
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1281,7 +1281,7 @@ Optional argument PROMPT is the prompt to show."
           t)
       nil)))
 
-
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Skeleton
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1332,6 +1332,8 @@ Optional argument PROMPT is the prompt to show."
   \n _)
 
 ;;;###autoload
+(defvar align-text-modes)
+
 (defun abc-align-bars (begin end)
   "Align on bar lines \"|\" between BEGIN and END (region)."
   (interactive "r")
