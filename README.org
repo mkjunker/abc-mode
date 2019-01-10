@@ -3,9 +3,13 @@ An Emacs major mode for editing [[http://abcnotation.com/wiki/abc:standard][ABC]
 
 It supports:
   + Editing ABC music files.
-  + Generating Postscript output (through external tools, such as [[http://moinejf.free.fr/][abcm2ps]]).
-  + Generating MIDI output (for example, [[http://abc.sourceforge.net/abcMIDI/][abcMIDI]]).
+  + Generating Postscript output (through external tools, such as
+    [[http://moinejf.free.fr/][abcm2ps]]).
+  + Generating MIDI output (for example, [[http://abc.sourceforge.net/abcMIDI/][abcMIDI]], latest source at
+    [[https://github.com/leesavide/abcmidi]]).
   
-Emacs Org Mode support is described at [[http://orgmode.org/worg/org-contrib/babel/languages/ob-doc-abc.html]].  The source file is at [[http://orgmode.org/cgit.cgi/org-mode.git/tree/lisp/ob-abc.el][ob-abc.el]].
+Emacs Org Mode support is described at
+[[http://orgmode.org/worg/org-contrib/babel/languages/ob-doc-abc.html]].
+The source file is at [[https://code.orgmode.org/bzg/org-mode/src/master/lisp/ob-abc.el][ob-abc.el]].
   
 Much more information can be found at Guido Gonzato's [[http://abcplus.sourceforge.net/][abcplus]] page.
