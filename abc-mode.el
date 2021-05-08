@@ -1,10 +1,10 @@
 ;;; abc-mode.el --- Major mode for editing abc music files
 
-;; Copyright (C) 2002, 2003, 2004, 2006, 2008, 2012, 2013, 2014, 2017
-;; Matthew K. Junker
+;; Copyright (C) 2002, 2003, 2004, 2006, 2008, 2012, 2013, 2014, 2017,
+;; 2021 Matthew K. Junker
 
 ;; Author: Matthew K. Junker <junker@alum.mit.edu>
-;; Package-Version: 20171020.51809
+;; Package-Version: 20210508.105113
 ;; Keywords: local, docs
 
 ;; This file is free software; you can redistribute it and/or modify
@@ -504,8 +504,8 @@ besides titles."
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (defcustom abc-mouse-pad
-  "\"                     -- E --    -- c' --  !(crescendo! !crescendo)!
-6               ^ _ =   D          b       !(diminuendo! !diminuendo)!
+  "\"                     -- E --    -- c' --  !crescendo(! !crescendo)!
+6               ^ _ =   D          b       !diminuendo(! !diminuendo)!
 7                   -- C --    -- a --
 9                     B,         g         space %
 11  ---------------- A, ------- f -------- newline
