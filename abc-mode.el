@@ -1,10 +1,10 @@
 ;;; abc-mode.el --- Major mode for editing abc music files
 
 ;; Copyright (C) 2002, 2003, 2004, 2006, 2008, 2012, 2013, 2014, 2017,
-;; 2021 Matthew K. Junker
+;; 2021, 2022 Matthew K. Junker
 
 ;; Author: Matthew K. Junker <junker@alum.mit.edu>
-;; Package-Version: 20210508.105113
+;; Package-Version: 20220711.1356
 ;; Keywords: local, docs
 
 ;; This file is free software; you can redistribute it and/or modify
