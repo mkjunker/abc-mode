@@ -60,6 +60,7 @@
 (require 'easymenu)
 (require 'newcomment)
 (require 'autoinsert)
+(require 'align)
 
 ;;;###autoload
 (add-to-list 'auto-mode-alist '("\\.abp\\'"  . abc-mode))
